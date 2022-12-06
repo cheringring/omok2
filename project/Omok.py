@@ -3,6 +3,8 @@ import time
 import sys
 import random
 
+# standard gomoku 규칙
+
 pygame.init()
 
 # 이미지 불러오기
@@ -20,6 +22,7 @@ game_player1 = pygame.image.load("Images/game/black.png")
 game_player2 = pygame.image.load("Images/game/white.png")
 
 game_finish = pygame.image.load("Images/game/finish.png")
+game_finish_draw = pygame.image.load("Images/game/finish_draw.png")
 game_pass = pygame.image.load("Images/game/pass.png")
 
 explain_background = pygame.image.load("Images/explain/background.png")
@@ -74,11 +77,9 @@ class Player:  # 플레이어 행동
                         there_is[i][j] == 0:  # 마우스 올려진 좌표 빈칸 검사
                     gameDisplay.blit(img, (53 + (i * 70), 50 + (j * 70)))  # 빈칸일 시 미리보기
                     if click[0] and turn == 1:  # 1P가 빈자리를 클릭
-                        if flip(i, j, 1, 2):
                             there_is[i][j] = 1
                             self.turn = 2
                     elif click[0] and turn == 2:  # 2P가 빈자리를 클릭
-                        if flip(i, j, 2, 1):
                             there_is[i][j] = 2
                             self.turn = 1
 
@@ -96,10 +97,8 @@ class CPU:  # 플레이어 행동
             for j in range(8):
                 if there_is[i][j] == 0:
                     if turn == 1:  # AI가 1P일때
-                        if possible_check(i, j, 1, 2):
                             able.append([i, j])
                     elif turn == 2:  # AI가 2P일때
-                        if possible_check(i, j, 2, 1):
                             able.append([i, j])
         if len(able) == 0:
             if turn == 1:
@@ -113,249 +112,18 @@ class CPU:  # 플레이어 행동
             i = able[index][0]
             j = able[index][1]
             if turn == 1:
-                if flip(i, j, 1, 2):
                     there_is[i][j] = 1
                     self.turn = 2
             elif turn == 2:
-                if flip(i, j, 2, 1):
                     there_is[i][j] = 2
                     self.turn = 1
 
 
-def possible_check(x, y, player, opponent):
-    check = False  # 놓을 수 없다고 가정
-    if x > 0 and y > 0 and there_is[x - 1][y - 1] == opponent:  # 좌상단
-        temp_x = x - 1
-        temp_y = y - 1
-        while temp_x >= 0 and temp_y >= 0:
-            if there_is[temp_x][temp_y] == opponent:
-                temp_x -= 1
-                temp_y -= 1
-            elif there_is[temp_x][temp_y] == player:
-                check = True
-                break
-            else:
-                break
-    if y > 0 and there_is[x][y - 1] == opponent:  # 상단
-        temp_x = x
-        temp_y = y - 1
-        while temp_y >= 0:
-            if there_is[temp_x][temp_y] == opponent:
-                temp_y -= 1
-            elif there_is[temp_x][temp_y] == player:
-                check = True
-                break
-            else:
-                break
-    if x < 7 and y > 0 and there_is[x + 1][y - 1] == opponent:  # 우상단
-        temp_x = x + 1
-        temp_y = y - 1
-        while temp_x <= 7 and temp_y >= 0:
-            if there_is[temp_x][temp_y] == opponent:
-                temp_x += 1
-                temp_y -= 1
-            elif there_is[temp_x][temp_y] == player:
-                check = True
-                break
-            else:
-                break
-    if x < 7 and there_is[x + 1][y] == opponent:  # 우측
-        temp_x = x + 1
-        temp_y = y
-        while temp_x <= 7:
-            if there_is[temp_x][temp_y] == opponent:
-                temp_x += 1
-            elif there_is[temp_x][temp_y] == player:
-                check = True
-                break
-            else:
-                break
-    if x < 7 and y < 7 and there_is[x + 1][y + 1] == opponent:  # 우하단
-        temp_x = x + 1
-        temp_y = y + 1
-        while temp_x <= 7 and temp_y <= 7:
-            if there_is[temp_x][temp_y] == opponent:
-                temp_x += 1
-                temp_y += 1
-            elif there_is[temp_x][temp_y] == player:
-                check = True
-                break
-            else:
-                break
-    if y < 7 and there_is[x][y + 1] == opponent:  # 하단
-        temp_x = x
-        temp_y = y + 1
-        while temp_y <= 7:
-            if there_is[temp_x][temp_y] == opponent:
-                temp_y += 1
-            elif there_is[temp_x][temp_y] == player:
-                check = True
-                break
-            else:
-                break
-    if x > 0 and y < 7 and there_is[x - 1][y + 1] == opponent:  # 좌하단
-        temp_x = x - 1
-        temp_y = y + 1
-        while temp_x >= 0 and temp_y <= 7:
-            if there_is[temp_x][temp_y] == opponent:
-                temp_x -= 1
-                temp_y += 1
-            elif there_is[temp_x][temp_y] == player:
-                check = True
-                break
-            else:
-                break
-    if x > 0 and there_is[x - 1][y] == opponent:  # 좌측
-        temp_x = x - 1
-        temp_y = y
-        while temp_x >= 0:
-            if there_is[temp_x][temp_y] == opponent:
-                temp_x -= 1
-            elif there_is[temp_x][temp_y] == player:
-                check = True
-                break
-            else:
-                break
-    return check
+# AI 범위 지정하는 알고리즘 필요
 
+# 규칙 지정하는 알고리즘 필요
 
-# 놓으려 하는 자리 주변 체크
-def flip(x, y, player, opponent):
-    check = False  # 놓을 수 없다고 가정
-    if x > 0 and y > 0 and there_is[x - 1][y - 1] == opponent:  # 좌상단
-        temp_x = x - 1
-        temp_y = y - 1
-        while temp_x >= 0 and temp_y >= 0:
-            if there_is[temp_x][temp_y] == opponent:
-                temp_x -= 1
-                temp_y -= 1
-            elif there_is[temp_x][temp_y] == player:
-                check = True
-                temp_x += 1
-                temp_y += 1
-                while there_is[temp_x][temp_y] == opponent:
-                    there_is[temp_x][temp_y] = player
-                    temp_x += 1
-                    temp_y += 1
-                break
-            else:
-                break
-    if y > 0 and there_is[x][y - 1] == opponent:  # 상단
-        temp_x = x
-        temp_y = y - 1
-        while temp_y >= 0:
-            if there_is[temp_x][temp_y] == opponent:
-                temp_y -= 1
-            elif there_is[temp_x][temp_y] == player:
-                check = True
-                temp_y += 1
-                while there_is[temp_x][temp_y] == opponent:
-                    there_is[temp_x][temp_y] = player
-                    temp_y += 1
-                break
-            else:
-                break
-    if x < 7 and y > 0 and there_is[x + 1][y - 1] == opponent:  # 우상단
-        temp_x = x + 1
-        temp_y = y - 1
-        while temp_x <= 7 and temp_y >= 0:
-            if there_is[temp_x][temp_y] == opponent:
-                temp_x += 1
-                temp_y -= 1
-            elif there_is[temp_x][temp_y] == player:
-                check = True
-                temp_x -= 1
-                temp_y += 1
-                while there_is[temp_x][temp_y] == opponent:
-                    there_is[temp_x][temp_y] = player
-                    temp_x -= 1
-                    temp_y += 1
-                break
-            else:
-                break
-    if x < 7 and there_is[x + 1][y] == opponent:  # 우측
-        temp_x = x + 1
-        temp_y = y
-        while temp_x <= 7:
-            if there_is[temp_x][temp_y] == opponent:
-                temp_x += 1
-            elif there_is[temp_x][temp_y] == player:
-                check = True
-                temp_x -= 1
-                while there_is[temp_x][temp_y] == opponent:
-                    there_is[temp_x][temp_y] = player
-                    temp_x -= 1
-                break
-            else:
-                break
-    if x < 7 and y < 7 and there_is[x + 1][y + 1] == opponent:  # 우하단
-        temp_x = x + 1
-        temp_y = y + 1
-        while temp_x <= 7 and temp_y <= 7:
-            if there_is[temp_x][temp_y] == opponent:
-                temp_x += 1
-                temp_y += 1
-            elif there_is[temp_x][temp_y] == player:
-                check = True
-                temp_x -= 1
-                temp_y -= 1
-                while there_is[temp_x][temp_y] == opponent:
-                    there_is[temp_x][temp_y] = player
-                    temp_x -= 1
-                    temp_y -= 1
-                break
-            else:
-                break
-    if y < 7 and there_is[x][y + 1] == opponent:  # 하단
-        temp_x = x
-        temp_y = y + 1
-        while temp_y <= 7:
-            if there_is[temp_x][temp_y] == opponent:
-                temp_y += 1
-            elif there_is[temp_x][temp_y] == player:
-                check = True
-                temp_y -= 1
-                while there_is[temp_x][temp_y] == opponent:
-                    there_is[temp_x][temp_y] = player
-                    temp_y -= 1
-                break
-            else:
-                break
-    if x > 0 and y < 7 and there_is[x - 1][y + 1] == opponent:  # 좌하단
-        temp_x = x - 1
-        temp_y = y + 1
-        while temp_x >= 0 and temp_y <= 7:
-            if there_is[temp_x][temp_y] == opponent:
-                temp_x -= 1
-                temp_y += 1
-            elif there_is[temp_x][temp_y] == player:
-                check = True
-                temp_x += 1
-                temp_y -= 1
-                while there_is[temp_x][temp_y] == opponent:
-                    there_is[temp_x][temp_y] = player
-                    temp_x += 1
-                    temp_y -= 1
-                break
-            else:
-                break
-    if x > 0 and there_is[x - 1][y] == opponent:  # 좌측
-        temp_x = x - 1
-        temp_y = y
-        while temp_x >= 0:
-            if there_is[temp_x][temp_y] == opponent:
-                temp_x -= 1
-            elif there_is[temp_x][temp_y] == player:
-                check = True
-                temp_x += 1
-                while there_is[temp_x][temp_y] == opponent:
-                    there_is[temp_x][temp_y] = player
-                    temp_x += 1
-                break
-            else:
-                break
-    return check
-
+# 승리 확인하는 알고리즘 필요
 
 # 시작메뉴
 def mainmenu():
@@ -410,14 +178,13 @@ def selectStone():
         clock.tick(15)
 
 
+
+
+
 # Player vs Player
 def gamePvP():
     gameexit = False
     player_turn = 1
-    there_is[3][3] = 1
-    there_is[3][4] = 2
-    there_is[4][3] = 2
-    there_is[4][4] = 1
 
     while not gameexit:
         for event in pygame.event.get():
@@ -430,9 +197,6 @@ def gamePvP():
         gameDisplay.blit(game_background, (0, 0))
         gameDisplay.blit(game_player_turn, (670, 0))
 
-        gameDisplay.blit(game_player1, (670, 393))
-        gameDisplay.blit(game_player2, (670, 495))
-
         # 말 그림 놓기
         for i in range(8):
             for j in range(8):
@@ -443,7 +207,6 @@ def gamePvP():
                     gameDisplay.blit(game_player2, (53 + (i * 70), 50 + (j * 70)))
                     count_player2 += 1
 
-        score(count_player1, count_player2)
 
         if player_turn == 1:  # 1P 턴일 때
             gameDisplay.blit(game_player1, (760, 170))
@@ -456,7 +219,7 @@ def gamePvP():
         pygame.display.update()
 
         if count_player1 + count_player2 == 64:  # 총 64개의 돌이 놓이면 종료
-            gameDisplay.blit(game_finish, (150, 100))
+            gameDisplay.blit(game_finish_draw, (150, 100))
             if count_player1 > count_player2:
                 gameDisplay.blit(game_player1, (450, 300))
             elif count_player2 > count_player1:
@@ -476,11 +239,6 @@ def gamePvP():
 def gameEvP():
     gameexit = False
     player_turn = 1
-    there_is[3][3] = 1
-    there_is[3][4] = 2
-    there_is[4][3] = 2
-    there_is[4][4] = 1
-
     while not gameexit:
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
@@ -492,9 +250,6 @@ def gameEvP():
         gameDisplay.blit(game_background, (0, 0))
         gameDisplay.blit(game_player_turn, (670, 0))
 
-        gameDisplay.blit(game_player1, (670, 393))
-        gameDisplay.blit(game_player2, (670, 495))
-
         # 말 그림 놓기
         for i in range(8):
             for j in range(8):
@@ -505,7 +260,6 @@ def gameEvP():
                     gameDisplay.blit(game_player2, (53 + (i * 70), 50 + (j * 70)))
                     count_player2 += 1
 
-        score(count_player1, count_player2)
 
         if player_turn == 1:  # 1P 턴일 때
             gameDisplay.blit(game_player1, (760, 170))
@@ -538,10 +292,6 @@ def gameEvP():
 def gamePvE():
     gameexit = False
     player_turn = 1
-    there_is[3][3] = 1
-    there_is[3][4] = 2
-    there_is[4][3] = 2
-    there_is[4][4] = 1
 
     while not gameexit:
         for event in pygame.event.get():
@@ -554,8 +304,6 @@ def gamePvE():
         gameDisplay.blit(game_background, (0, 0))
         gameDisplay.blit(game_player_turn, (670, 0))
 
-        gameDisplay.blit(game_player1, (670, 393))
-        gameDisplay.blit(game_player2, (670, 495))
 
         # 말 그림 놓기
         for i in range(8):
@@ -567,7 +315,6 @@ def gamePvE():
                     gameDisplay.blit(game_player2, (53 + (i * 70), 50 + (j * 70)))
                     count_player2 += 1
 
-        score(count_player1, count_player2)
 
         if player_turn == 1:  # 1P 턴일 때
             gameDisplay.blit(game_player1, (760, 170))
@@ -601,16 +348,6 @@ def reset():
     for i in range(8):
         for j in range(8):
             there_is[i][j] = 0
-
-
-# 현재 점수 표시
-def score(player1, player2):
-    font = pygame.font.SysFont("a두리둥실", 60)
-    player1_score = font.render(str(player1), True, Red)
-    player2_score = font.render(str(player2), True, Red)
-    gameDisplay.blit(player1_score, (750, 400))
-    gameDisplay.blit(player2_score, (750, 500))
-
 
 # 설명
 def explain():
