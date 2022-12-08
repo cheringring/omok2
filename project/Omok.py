@@ -112,8 +112,15 @@ class CPU:  # 플레이어 행동
                             able.append([i, j])
                         if CPU_where_2(i,j,1):
                             able_lose.append([i, j])
+        if len(able)==0 and len(able_lose)==0 and len(able_random)==0:
+            if turn == 1:
+                self.turn = 2
+                time.sleep(0.5)
+            elif turn == 2:
+                self.turn = 1
+                time.sleep(0.5)
 
-        if len(able) == 0: # 하고자하는 부분이 없으면 (돌이 없으면, 패배할 수 있는 부분이 없으면) 무작위 선택
+        elif len(able) == 0: # 하고자하는 부분이 없으면 (돌이 없으면, 패배할 수 있는 부분이 없으면) 무작위 선택
             index_random = random.randrange(len(able_random))
             i = able_random[index_random][0]
             j = able_random[index_random][1]
@@ -212,15 +219,15 @@ def CPU_where_1(i,j,player):
         if i>0 and i<7 and j ==7:
             if there_is[i][j-1]==player or there_is[i-1][j]==player or there_is[i+1][j]==player or there_is[i-1][j-1]==player or there_is[i+1][j-1]==player:
                 check=True
-                
-        # 상대 승리 막는 곳
+
 
 
     return check
 
+# 상대 승리 막는곳
 def CPU_where_2(i,j,oppender):
     
-    # 상대 승리 막는곳
+
 
     check_win= False
 
