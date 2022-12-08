@@ -63,11 +63,11 @@ class Player:  # 플레이어 행동
         click = pygame.mouse.get_pressed()
         self.turn = turn
 
-        gameDisplay.blit(game_pass, (810, 580))
-        if 930 > mouse[0] > 810 and 640 > mouse[1] > 580 and click[0] and turn == 1:
+        gameDisplay.blit(game_pass, (610, 500))
+        if 940 > mouse[0] > 610 and 640 > mouse[1] > 500 and click[0] and turn == 1:
             self.turn = 2
             time.sleep(0.5)
-        elif 930 > mouse[0] > 810 and 640 > mouse[1] > 580 and click[0] and turn == 2:
+        elif 940 > mouse[0] > 610 and 640 > mouse[1] > 500 and click[0] and turn == 2:
             self.turn = 1
             time.sleep(0.5)
 
@@ -335,90 +335,90 @@ def possible_check(x,y,player):
         # 대각선_1
 
         if (x > 0 and x < 3) and (y > 0 and y < 3):
-            if there_is[x - 1][y - 1] == 0 and there_is[x + 1][y + 1] == 1 and there_is[x + 2][y + 2] == 1 and \
-                    there_is[x + 3][y + 3] == 1 and there_is[x + 4][y + 4] == 1 and there_is[x+5][y+5]==0:
+            if (there_is[x - 1][y - 1] == 0 or  there_is[x+5][y+5]==0) and there_is[x + 1][y + 1] == 1 and there_is[x + 2][y + 2] == 1 and \
+                    there_is[x + 3][y + 3] == 1 and there_is[x + 4][y + 4] == 1:
                 count_4 += 1
         if (x > 1 and x < 4) and (y > 1 and y < 4):
-            if there_is[x - 2][y - 2] == 0 and there_is[x - 1][y - 1] == 1 and there_is[x + 1][y + 1] == 1 and \
-                    there_is[x + 2][y + 2] == 1 and there_is[x + 3][y + 3] == 1 and there_is[x+4][y+4]==0:
+            if (there_is[x - 2][y - 2] == 0 or there_is[x+4][y+4]==0) and there_is[x - 1][y - 1] == 1 and there_is[x + 1][y + 1] == 1 and \
+                    there_is[x + 2][y + 2] == 1 and there_is[x + 3][y + 3] == 1:
                 count_4 += 1
         if (x > 2 and x < 5) and (y > 2 and y < 5):
-            if there_is[x - 3][y - 3] == 0 and there_is[x - 2][y - 2] == 1 and there_is[x - 1][y - 1] == 1 and \
-                    there_is[x + 1][y + 1] == 1 and there_is[x + 2][y + 2] == 1 and there_is[x+3][y+3]==0:
+            if (there_is[x - 3][y - 3] == 0 or there_is[x+3][y+3]==0) and there_is[x - 2][y - 2] == 1 and there_is[x - 1][y - 1] == 1 and \
+                    there_is[x + 1][y + 1] == 1 and there_is[x + 2][y + 2] == 1:
                 count_4 += 1
         if (x > 3 and x < 6) and (y > 3 and y < 6):
-            if there_is[x - 4][y - 4] == 0 and there_is[x - 3][y - 3] == 1 and there_is[x - 2][y - 2] == 1 and \
-                    there_is[x - 1][y - 1] == 1 and there_is[x + 1][y + 1] == 1 and there_is[x+2][y+2]==0:
+            if (there_is[x - 4][y - 4] == 0 or there_is[x+2][y+2]==0) and there_is[x - 3][y - 3] == 1 and there_is[x - 2][y - 2] == 1 and \
+                    there_is[x - 1][y - 1] == 1 and there_is[x + 1][y + 1] == 1:
                 count_4 += 1
         if (x > 4 and x < 7) and (y > 4 and y < 7):
-            if there_is[x - 5][y - 5] == 0 and there_is[x - 4][y - 4] == 1 and there_is[x - 3][y - 3] == 1 and \
-                    there_is[x - 2][y - 2] == 1 and there_is[x - 1][y - 1] == 1 and there_is[x+1][y+1]==0:
+            if (there_is[x - 5][y - 5] == 0 or there_is[x+1][y+1]==0)  and there_is[x - 4][y - 4] == 1 and there_is[x - 3][y - 3] == 1 and \
+                    there_is[x - 2][y - 2] == 1 and there_is[x - 1][y - 1] == 1:
                 count_4 += 1
 
         # 대각선_2
 
         if (x > 4 and x < 7) and (y > 0 and y < 3):
-            if there_is[x + 1][y - 1] == 0 and there_is[x - 1][y + 1] == 1 and there_is[x - 2][y + 2] == 1 and \
-                    there_is[x - 3][y + 3] == 1 and there_is[x - 4][y + 4] == 1 and there_is[x-5][y+5]==0:
+            if (there_is[x + 1][y - 1] == 0 or there_is[x-5][y+5]==0) and there_is[x - 1][y + 1] == 1 and there_is[x - 2][y + 2] == 1 and \
+                    there_is[x - 3][y + 3] == 1 and there_is[x - 4][y + 4] == 1:
                 count_4 += 1
         if (x > 3 and x < 6) and (y > 1 and y < 4):
-            if there_is[x + 2][y - 2] == 0 and there_is[x + 1][y - 1] == 1 and there_is[x - 1][y + 1] == 1 and \
-                    there_is[x - 2][y + 2] == 1 and there_is[x - 3][y + 3] == 1 and there_is[x-4][y+4]==0:
+            if (there_is[x + 2][y - 2] == 0 or there_is[x-4][y+4]==0) and there_is[x + 1][y - 1] == 1 and there_is[x - 1][y + 1] == 1 and \
+                    there_is[x - 2][y + 2] == 1 and there_is[x - 3][y + 3] == 1:
                 count_4 += 1
         if (x > 2 and x < 5) and (y > 2 and y < 5):
-            if there_is[x + 3][y - 3] == 0 and there_is[x + 2][y - 2] == 1 and there_is[x + 1][y - 1] == 1 and \
-                    there_is[x - 1][y + 1] == 1 and there_is[x - 2][y + 2] == 1 and there_is[x-3][y+3]==0:
+            if (there_is[x + 3][y - 3] == 0 or there_is[x-3][y+3]==0) and there_is[x + 2][y - 2] == 1 and there_is[x + 1][y - 1] == 1 and \
+                    there_is[x - 1][y + 1] == 1 and there_is[x - 2][y + 2] == 1:
                 count_4 += 1
         if (x > 1 and x < 4) and (y > 3 and y < 6):
-            if there_is[x + 4][y - 4] == 0 and there_is[x + 3][y - 3] == 1 and there_is[x + 2][y - 2] == 1 and \
-                    there_is[x + 1][y - 1] == 1 and there_is[x - 1][y + 1] == 1 and there_is[x-2][y+2]==0:
+            if (there_is[x + 4][y - 4] == 0 or there_is[x-2][y+2]==0) and there_is[x + 3][y - 3] == 1 and there_is[x + 2][y - 2] == 1 and \
+                    there_is[x + 1][y - 1] == 1 and there_is[x - 1][y + 1] == 1:
                 count_4 += 1
         if (x > 0 and x < 3) and (y > 4 and y < 7):
-            if there_is[x + 5][y - 5] == 0 and there_is[x + 4][y - 4] == 1 and there_is[x + 3][y - 3] == 1 and \
-                    there_is[x + 2][y - 2] == 1 and there_is[x + 1][y - 1] == 0 and there_is[x-1][y+1]==0:
+            if (there_is[x + 5][y - 5] == 0 or there_is[x-1][y+1]==0) and there_is[x + 4][y - 4] == 1 and there_is[x + 3][y - 3] == 1 and \
+                    there_is[x + 2][y - 2] == 1 and there_is[x + 1][y - 1] == 0:
                 count_4 += 1
 
         # 가로
         if (y > 0 and y < 3):
-            if there_is[x][y - 1] == 0 and there_is[x][y + 1] == 1 and there_is[x][y + 2] == 1 and \
-                    there_is[x][y + 3] == 1 and there_is[x][y + 4] == 1 and there_is[x][y + 5] == 0:
+            if (there_is[x][y - 1] == 0 or there_is[x][y + 5] == 0) and there_is[x][y + 1] == 1 and there_is[x][y + 2] == 1 and \
+                    there_is[x][y + 3] == 1 and there_is[x][y + 4] == 1 :
                 count_4 += 1
         if (y > 1 and y < 4):
-            if there_is[x][y - 2] == 0 and there_is[x][y - 1] == 1 and there_is[x][y + 1] == 1 and \
-                    there_is[x][y + 2] == 1 and there_is[x][y + 3] == 1 and there_is[x][y + 4] == 0:
+            if (there_is[x][y - 2] == 0 or there_is[x][y + 4] == 0) and there_is[x][y - 1] == 1 and there_is[x][y + 1] == 1 and \
+                    there_is[x][y + 2] == 1 and there_is[x][y + 3] == 1:
                 count_4 += 1
         if (y > 2 and y < 5):
-            if there_is[x][y - 3] == 0 and there_is[x][y - 2] == 1 and there_is[x][y - 1] == 1 and \
-                    there_is[x][y + 1] == 1 and there_is[x][y + 2] == 1 and there_is[x][y + 3] == 0:
+            if (there_is[x][y - 3] == 0 or there_is[x][y + 3] == 0) and there_is[x][y - 2] == 1 and there_is[x][y - 1] == 1 and \
+                    there_is[x][y + 1] == 1 and there_is[x][y + 2] == 1:
                 count_4 += 1
         if (y > 3 and y < 6):
-            if there_is[x][y - 4] == 0 and there_is[x][y - 3] == 1 and there_is[x][y - 2] == 1 and \
-                    there_is[x][y - 1] == 1 and there_is[x][y + 1] == 1 and there_is[x][y + 2] == 0:
+            if (there_is[x][y - 4] == 0 or there_is[x][y + 2] == 0) and there_is[x][y - 3] == 1 and there_is[x][y - 2] == 1 and \
+                    there_is[x][y - 1] == 1 and there_is[x][y + 1] == 1 :
                 count_4 += 1
         if (y > 4 and y < 7):
-            if there_is[x][y - 5] == 0 and there_is[x][y - 4] == 1 and there_is[x][y - 3] == 1 and \
-                    there_is[x][y - 2] == 1 and there_is[x][y - 1] == 1 and there_is[x][y + 1] == 0:
+            if (there_is[x][y - 5] == 0 or there_is[x][y + 1] == 0) and there_is[x][y - 4] == 1 and there_is[x][y - 3] == 1 and \
+                    there_is[x][y - 2] == 1 and there_is[x][y - 1] == 1:
                 count_4 += 1
         # 세로
         if (x > 0 and x < 3):
-            if there_is[x - 1][y] == 0 and there_is[x + 1][y] == 1 and there_is[x + 2][y] == 1 and \
-                    there_is[x + 3][y] == 1 and there_is[x + 4][y] == 1 and there_is[x + 5][y] == 0:
+            if (there_is[x - 1][y] == 0 or there_is[x + 5][y] == 0) and there_is[x + 1][y] == 1 and there_is[x + 2][y] == 1 and \
+                    there_is[x + 3][y] == 1 and there_is[x + 4][y] == 1:
                 count_4 += 1
         if (x > 1 and x < 4):
-            if there_is[x - 2][y] == 0 and there_is[x - 1][y] == 1 and there_is[x + 1][y] == 1 and \
-                    there_is[x + 2][y] == 1 and there_is[x + 3][y] == 1 and there_is[x + 4][y] == 0:
+            if (there_is[x - 2][y] == 0 or there_is[x + 4][y] == 0) and there_is[x - 1][y] == 1 and there_is[x + 1][y] == 1 and \
+                    there_is[x + 2][y] == 1 and there_is[x + 3][y] == 1:
                 count_4 += 1
         if (x > 2 and x < 5):
-            if there_is[x - 3][y] == 0 and there_is[x - 2][y] == 1 and there_is[x - 1][y] == 1 and \
-                    there_is[x + 1][y] == 1 and there_is[x + 2][y] == 1 and there_is[x + 3][y] == 0:
+            if (there_is[x - 3][y] == 0 or there_is[x + 3][y] == 0) and there_is[x - 2][y] == 1 and there_is[x - 1][y] == 1 and \
+                    there_is[x + 1][y] == 1 and there_is[x + 2][y] == 1:
                 count_4 += 1
         if (x > 3 and x < 6):
-            if there_is[x - 4][y] == 0 and there_is[x - 3][y] == 1 and there_is[x - 2][y] == 1 and \
-                    there_is[x - 1][y] == 1 and there_is[x + 1][y] == 1 and there_is[x + 2][y] == 0:
+            if (there_is[x - 4][y] == 0 or there_is[x + 2][y] == 0) and there_is[x - 3][y] == 1 and there_is[x - 2][y] == 1 and \
+                    there_is[x - 1][y] == 1 and there_is[x + 1][y] == 1:
                 count_4 += 1
         if (x > 4 and x < 7):
-            if there_is[x - 5][y] == 0 and there_is[x - 4][y] == 1 and there_is[x - 3][y] == 1 and \
-                    there_is[x - 2][y] == 1 and there_is[x - 1][y] == 1 and there_is[x + 1][y] == 0:
+            if (there_is[x - 5][y] == 0 or there_is[x + 1][y] == 0) and there_is[x - 4][y] == 1 and there_is[x - 3][y] == 1 and \
+                    there_is[x - 2][y] == 1 and there_is[x - 1][y] == 1 :
                 count_4 += 1
 
         if count_4 >=2:
