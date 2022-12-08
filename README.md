@@ -35,11 +35,32 @@
 
 ## 1.메인 메뉴
 
-![](https://github.com/githyj-jang/omok/tree/main/project/Images/markdown/main.png)
+![image](/project/Images/markdown/main.PNG)
 
 ## 2. 게임설명
 
+![image](/project/Images/markdown/explain.PNG)
 
-![](https://github.com/githyj-jang/omok/tree/main/project/Images/markdown/explain.png)
+## 3. 플레이어 수 , 선/후공 선택
+
+![image](/project/Images/markdown/player.PNG)
+
+![image](/project/Images/markdown/select_color.PNG)
+
+## 4. 게임화면
 
 
+![image](/project/Images/markdown/play.PNG)
+
+![image](/project/Images/markdown/victory.PNG)
+
+
+
+
+-----------------------------------------
+
+출처
+
+code : https://github.com/kulord99/Othello
+
+font : https://cooltext.com/Logo-Design-Fun
