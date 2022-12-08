@@ -23,7 +23,7 @@ game_player2 = pygame.image.load("Images/game/white.png")
 
 game_finish = pygame.image.load("Images/game/finish.png")
 game_finish_draw = pygame.image.load("Images/game/finish_draw.png")
-game_pass = pygame.image.load("Images/game/pass.png")
+game_skip = pygame.image.load("Images/game/skip.png")
 
 explain_background = pygame.image.load("Images/explain/background.png")
 explain_back = pygame.image.load("Images/explain/back.png")
@@ -63,7 +63,7 @@ class Player:  # 플레이어 행동
         click = pygame.mouse.get_pressed()
         self.turn = turn
 
-        gameDisplay.blit(game_pass, (610, 500))
+        gameDisplay.blit(game_skip, (610, 500))
         if 940 > mouse[0] > 610 and 640 > mouse[1] > 500 and click[0] and turn == 1:
             self.turn = 2
             time.sleep(0.5)
