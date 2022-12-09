@@ -118,10 +118,12 @@ reference
 > Code, Image
 > 이 프로젝트는 Othello 게임 Othello.py를 기반으로 만들어졌습니다.
 > 이미지를 가져와서 가공하여 사용하였습니다.
-> https://github.com/kulord99/Othello
+> 
+>https://github.com/kulord99/Othello
 
 > Font 
 > 프로젝트의 font는 아래의 주소에서 가져와 만들었습니다.
+>
 > https://cooltext.com/Logo-Design-Fun
 
 > 이 프로젝트는 MIT 라이센스로 배포됩니다.
