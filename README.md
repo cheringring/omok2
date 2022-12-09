@@ -113,7 +113,7 @@ CPU의 경우 자동으로 턴이 넘어갑니다.
 
 -----------------------------------------
 
-출처
+reference
 
 code : https://github.com/kulord99/Othello
 
