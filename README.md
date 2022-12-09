@@ -123,6 +123,7 @@ reference
 
 > Font 
 > 프로젝트의 font는 아래의 주소에서 가져와 만들었습니다.
+> 폰트의 저작권은 작성자가 소유하지 않습니다.
 >
 > https://cooltext.com/Logo-Design-Fun
 
