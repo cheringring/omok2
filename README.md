@@ -115,6 +115,11 @@ CPU의 경우 자동으로 턴이 넘어갑니다.
 
 reference
 
-code : https://github.com/kulord99/Othello
+> Code, Image
+> 이 프로젝트는 Othello 게임 Othello.py를 기반으로 만들어졌습니다.
+> 이미지를 가져와서 가공하여 사용하였습니다.
+> https://github.com/kulord99/Othello
 
-font : https://cooltext.com/Logo-Design-Fun
+> Font 
+> 프로젝트의 font는 아래의 주소에서 가져와 만들었습니다.
+> https://cooltext.com/Logo-Design-Fun
