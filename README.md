@@ -123,3 +123,6 @@ reference
 > Font 
 > 프로젝트의 font는 아래의 주소에서 가져와 만들었습니다.
 > https://cooltext.com/Logo-Design-Fun
+
+> 이 프로젝트는 MIT 라이센스로 배포됩니다.
+> 상세한 라이선스 정보는 LICENSE 에서 확인할 수 있습니다.
