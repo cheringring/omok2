@@ -113,7 +113,7 @@ CPU의 경우 자동으로 턴이 넘어갑니다.
 
 -----------------------------------------
 
-reference
+###Reference
 
 > Code, Image
 > 이 프로젝트는 Othello 게임 Othello.py를 기반으로 만들어졌습니다.
