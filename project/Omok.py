@@ -8,31 +8,31 @@ import random
 pygame.init()
 
 # 이미지 불러오기
-mainmenu_background = pygame.image.load("Images/mainmenu/background.png")
-mainmenu_start = pygame.image.load("Images/mainmenu/start.png")
-mainmenu_explain = pygame.image.load("Images/mainmenu/explain.png")
-mainmenu_finish = pygame.image.load("Images/mainmenu/finish.png")
-mainmenu_start_click = pygame.image.load("Images/mainmenu/start_click.png")
-mainmenu_explain_click = pygame.image.load("Images/mainmenu/explain_click.png")
-mainmenu_finish_click = pygame.image.load("Images/mainmenu/finish_click.png")
+mainmenu_background = pygame.image.load("/Users/kwoncheeun/omok2/project/Images/mainmenu/background.png")
+mainmenu_start = pygame.image.load("/Users/kwoncheeun/omok2/project/Images/mainmenu/start.png")
+mainmenu_explain = pygame.image.load("/Users/kwoncheeun/omok2/project/Images/mainmenu/explain.png")
+mainmenu_finish = pygame.image.load("/Users/kwoncheeun/omok2/project/Images/mainmenu/finish.png")
+mainmenu_start_click = pygame.image.load("/Users/kwoncheeun/omok2/project/Images/mainmenu/start_click.png")
+mainmenu_explain_click = pygame.image.load("/Users/kwoncheeun/omok2/project/Images/mainmenu/explain_click.png")
+mainmenu_finish_click = pygame.image.load("/Users/kwoncheeun/omok2/project/Images/mainmenu/finish_click.png")
 
-game_background = pygame.image.load("Images/game/background.png")
-game_player_turn = pygame.image.load("Images/game/player_turn.png")
-game_player1 = pygame.image.load("Images/game/black.png")
-game_player2 = pygame.image.load("Images/game/white.png")
+game_background = pygame.image.load("/Users/kwoncheeun/omok2/project/Images/game/background.png")
+game_player_turn = pygame.image.load("/Users/kwoncheeun/omok2/project/Images/game/player_turn.png")
+game_player1 = pygame.image.load("/Users/kwoncheeun/omok2/project/Images/game/black.png")
+game_player2 = pygame.image.load("/Users/kwoncheeun/omok2/project/Images/game/white.png")
 
-game_finish = pygame.image.load("Images/game/finish.png")
-game_finish_draw = pygame.image.load("Images/game/finish_draw.png")
-game_skip = pygame.image.load("Images/game/skip.png")
+game_finish = pygame.image.load("/Users/kwoncheeun/omok2/project/Images/game/finish.png")
+game_finish_draw = pygame.image.load("/Users/kwoncheeun/omok2/project/Images/game/finish_draw.png")
+game_skip = pygame.image.load("/Users/kwoncheeun/omok2/project/Images/game/skip.png")
 
-explain_background = pygame.image.load("Images/explain/background.png")
-explain_back = pygame.image.load("Images/explain/back.png")
-explain_back_click = pygame.image.load("Images/explain/back_click.png")
+explain_background = pygame.image.load("/Users/kwoncheeun/omok2/project/Images/explain/background.png")
+explain_back = pygame.image.load("/Users/kwoncheeun/omok2/project/Images/explain/back.png")
+explain_back_click = pygame.image.load("/Users/kwoncheeun/omok2/project/Images/explain/back_click.png")
 
-player_1P = pygame.image.load("Images/player/1P.png")
-player_2P = pygame.image.load("Images/player/2P.png")
-player_blackPlayer = pygame.image.load("Images/player/blackPlayer.png")
-player_whitePlayer = pygame.image.load("Images/player/whitePlayer.png")
+player_1P = pygame.image.load("/Users/kwoncheeun/omok2/project/Images/player/1P.png")
+player_2P = pygame.image.load("/Users/kwoncheeun/omok2/project/Images/player/2P.png")
+player_blackPlayer = pygame.image.load("/Users/kwoncheeun/omok2/project/Images/player/blackPlayer.png")
+player_whitePlayer = pygame.image.load("/Users/kwoncheeun/omok2/project/Images/player/whitePlayer.png")
 
 # 기본 설정
 display_width = 960  # 화면 가로 크기
@@ -638,6 +638,7 @@ def winner(there_is):
                 win =2
                 return win
 
+
     #세로
     for i in range(4):
         for j in range(8):
@@ -671,6 +672,7 @@ def mainmenu():
 
 
 # 1P로 할지 2P로 할지 선택
+# 1p 추가 
 def selectPlay():
     play = True
 
@@ -687,6 +689,7 @@ def selectPlay():
         clock.tick(15)
 
 
+# 1p 추가 
 # 검정으로 할지 흰색으로 할지 선택
 def selectStone():
     play = True
@@ -733,7 +736,7 @@ def gamePvP():
                     gameDisplay.blit(game_player2, (53 + (i * 70), 50 + (j * 70)))
                     count_player2 += 1
 
-
+# 1p 추가 
         if player_turn == 1:  # 1P 턴일 때
             gameDisplay.blit(game_player1, (760, 170))
             player1 = Player(game_player1, player_turn)
@@ -794,6 +797,7 @@ def gameEvP():
                     count_player2 += 1
 
 
+# 1p 추가 
         if player_turn == 1:  # 1P 턴일 때
             gameDisplay.blit(game_player1, (760, 170))
             player1 = CPU(game_player1, player_turn)
